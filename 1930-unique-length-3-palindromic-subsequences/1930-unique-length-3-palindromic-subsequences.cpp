@@ -11,7 +11,7 @@ public:
         int ans=0;
         for(int i=0;i<26;i++)
         {
-            if(v[i].second!=-1)
+            if(v[i].first<v[i].second)
             {
                 unordered_set<char>res;
                 for(int x=v[i].first+1;x<v[i].second;x++)
