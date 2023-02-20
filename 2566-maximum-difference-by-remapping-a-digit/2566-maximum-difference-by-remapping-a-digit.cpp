@@ -1,42 +1,31 @@
 class Solution {
 public:
-    int minMaxDifference(int num) {
-        string s = to_string(num);
+    int minMaxDifference(int number) {
+        string num1= to_string(number);
+        string num2=to_string(number);
         
-        int id=0;
-        char c = s[0];
-        for(int i=0;i<s.length();i++){
-            if(s[i] != '9'){
-                c = s[i];
-                id= i;
+        char c=num1[0],ch=num1[0];
+        
+        for(int i=0; i<num1.size(); i++)
+        {
+            if(num1[i]!='9'){
+                c=num1[i];
                 break;
             }
         }
         
-        string s1 = "";
-        for(int i=0;i<s.length();i++){
-            if(s[i] == c){
-                s1 += '9';
-            }else{
-                s1 += s[i];
-            }
-        }
-        // cout<<s1<<endl;
-        
-        string s2 = "";
-        for(int i=0;i<s.length();i++){
-            if(s[i] == s[0]){
-                s2 += '0';
-            }else{
-                s2 += s[i];
-            }
+        for(int i=0; i<num1.size(); i++)
+        {
+            if(num1[i]==c) num1[i]='9';
         }
         
-        // cout<<s2<<endl;
+        for(int i=0; i<num1.size(); i++)
+        {
+            if(num2[i]==ch) num2[i]='0';
+        }
         
-        int val1 = stoi(s1);
-        int val2 = stoi(s2);
-        
-        return (val1-val2);
+        int max_num=stoi(num1);
+        int min_num=stoi(num2);
+        return max_num -min_num;
     }
 };
