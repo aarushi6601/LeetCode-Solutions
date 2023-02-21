@@ -4,7 +4,7 @@ public:
         unordered_set<int>s(nums.begin(),nums.end());
         int x=1;
         while(s.count(x))
-            x<<=1;
+            x*=2;
         return x;
         
     }
