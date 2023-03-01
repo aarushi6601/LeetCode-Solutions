@@ -12,36 +12,34 @@ class Solution {
 public:
     ListNode* removeZeroSumSublists(ListNode* head) {
         
-        ListNode* root =new ListNode(0);
-        root->next=head;
-        unordered_map<int,ListNode*>um;
-        um[0]=root;
-        int ac=0;
-        
-        while(head!=NULL){
-            ac+=head->val;
-            
-            //found value
-            if(um.find(ac)!=um.end()){
-                ListNode* prev= um[ac];
-                ListNode* start= prev;
-                
-                //delete bad references
-                int aux = ac;
-                while(prev!=head){
-                    prev=prev->next;
-                    aux+=prev->val;
-                    if(prev!=head)um.erase(aux);
+       if(head==NULL) return head;
+        ListNode* dummy=new ListNode(0);
+        int pref=0;
+        unordered_map<int,ListNode*> mp;
+        dummy->next=head;
+        mp[0]=dummy;
+        while(head)
+        {
+            pref+=head->val;
+            if(mp.find(pref)!=mp.end())
+            {
+                ListNode* start=mp[pref];
+                int sum=pref;
+                while(start!=head &&  start!=NULL)
+                {
+                    start=start->next;
+                    sum+=start->val;
+                    if(start!=head)
+                        mp.erase(sum);
                 }
-                
-                start->next = head->next;
-            }else{
-                um[ac]= head;
+                mp[pref]->next=head->next;
             }
-            
+            else
+            {
+                mp[pref]=head;
+            }
             head=head->next;
         }
-        
-        return root->next;
+        return dummy->next;
     }
 };
