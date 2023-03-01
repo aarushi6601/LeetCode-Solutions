@@ -31,7 +31,7 @@ public:
                     sum+=start->val;
                     if(start!=head)
                         mp.erase(sum);
-                }
+                }//erasing the value from the map which has to be erased from the linkedlist
                 mp[pref]->next=head->next;
             }
             else
