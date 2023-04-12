@@ -10,7 +10,8 @@ public:
         int ans=cnt;
         for(int i=k;i<st.length();i++)
         {
-            cnt+=s.count(st[i])-s.count(st[i-k]);
+            if(s.count(st[i])>0) cnt++;
+            if(s.count(st[i-k])>0) cnt--;
             ans=max(cnt,ans);
         }
         return ans;
