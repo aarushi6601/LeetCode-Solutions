@@ -34,4 +34,5 @@ public:
         inorder(root->right,curr);
         
     }
+    //doing the inorder traversal of the binary tree in the second function and while we are at it we might store the inorder values in a list and in second function we can go thru all the vals and store all the consecutive values in node after node and make new nodes for this process. dummy node points at the head of the newly made bst and the curr moves right by right.
 };
