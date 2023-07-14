@@ -5,7 +5,7 @@ public:
         while(n)
         {
             cnt+=n&1;
-            n>>=1;
+            n=n/2;
         }
         return cnt;
     }
