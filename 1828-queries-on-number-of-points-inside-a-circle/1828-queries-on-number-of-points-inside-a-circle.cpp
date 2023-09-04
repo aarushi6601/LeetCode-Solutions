@@ -1,4 +1,7 @@
 class Solution {
+    // private:
+    // int sq(int x){return x*x;}
+    //when u use it u can make things easier by simply typing sq(p[0]-q[0])
 public:
     vector<int> countPoints(vector<vector<int>>& points, vector<vector<int>>& queries) {
         //equation of the circle with centers at (h,k) is (x-h)2+(y-k)2=r2
@@ -23,3 +26,4 @@ public:
         return ans;
     }
 };
+
