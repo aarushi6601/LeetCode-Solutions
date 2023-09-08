@@ -32,4 +32,5 @@ public:
         }
         return ans;
     }
+    //or we could make three separate lists for less,greater and equal and all merge them into one as the aans
 };
