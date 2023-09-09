@@ -2,18 +2,21 @@ class Solution {
 public:
     vector<int> processQueries(vector<int>& queries, int m) 
     {
-        vector<int>v(m+1);
-        for(int i=0;i<m;i++)
-            v[i+1]=i;
-        for(int j=0;j<queries.size();j++)
+         vector<int>pos(m);
+        vector<int>ans;
+        iota(pos.begin(),pos.end(),0);
+        for(int x:queries)
         {
-            int temp=v[queries[j]];
-            for(int i=1;i<=m;i++)
-                if(v[i]<temp)
-                    v[i]++;
-            v[queries[j]]=0;
-            queries[j]=temp;
+            ans.push_back(pos[x-1]);
+            for(int &y:pos)
+            {
+                if(y<pos[x-1]) ++y;
+            }
+            pos[x-1]=0;
         }
-        return queries;
+        return ans;
     }
 };
+
+//iota function in c++ fills increasing sequence in the range first,last
+//syntax is vector<int>pos, iota(pos.begin(),pos.end(),0);vector
