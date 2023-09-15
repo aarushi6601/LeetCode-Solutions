@@ -18,6 +18,7 @@ public:
     }
     void solve(TreeNode* node,int currMax){
         if(node==NULL) return;
+        //we are just recording the max value of the node encountered so far, if the current val of the node is greater then the currmax we have to update currmax and reset it, increase our count of good nodes and continue exploration in the left and the right subtree
        if(node->val>=currMax)
        {
            currMax=node->val;
