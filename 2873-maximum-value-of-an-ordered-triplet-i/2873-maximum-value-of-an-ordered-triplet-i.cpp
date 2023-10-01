@@ -1,30 +1,22 @@
 class Solution {
 public:
     long long maximumTripletValue(vector<int>& nums) {
-        int n=nums.size();
-        vector<int>prf(n,0),suff(n,0);
-        prf[0]=nums[0];
-        for(int i=1;i<n;i++){
-            prf[i]=max(prf[i-1],nums[i]);
-           
+        vector<int> l(nums.size()), r(nums.size());
+        // prefix max
+        l[0] = nums[0];
+        for (int i = 1; i < nums.size() - 1; i++) {
+            l[i] = max(l[i - 1], nums[i - 1]);
         }
-        int m=nums[n-1];
-        for(int i=n-2;i>=0;i--){
-            suff[i]=m;
-            m=max(m,nums[i]);
+        // suffix max
+        r[nums.size() - 1] = nums[nums.size() - 1];
+        for (int i = nums.size() - 2; i >= 1; i--) {
+            r[i] = max(r[i + 1], nums[i + 1]);
         }
-        long long ans=0;
-        for(int i=0;i<n-1;i++){
-            long long v= (prf[i]-(1LL*nums[i]))*(1LL*suff[i]);
-           ans=max(ans,v);
+        // initialize ans as 0 to automatically eliminate any negative values
+        long long ans = 0;
+        for (int i = 1; i < nums.size() - 1; i++) {
+            ans = max(ans, (long long)(l[i] - nums[i]) * r[i]);
         }
         return ans;
-        
     }
 };
-
-//to convrt an int to long w multiply it with 1LL
-// //It consists of three elements from the array.
-// The first element is the maximum value in the prefix of the current element.
-// The second element is the current element itself.
-// The third element is the maximum value in the suffix of the current element.
