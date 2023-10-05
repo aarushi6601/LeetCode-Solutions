@@ -7,17 +7,16 @@ public:
         while(lft<right)
         {
             int sum=nums[lft]+nums[right];
-            if(sum>target)
-                right--;
+            if(sum==target)
+                return {lft+1,right+1};
+               
             else if(sum<target)
                 lft++;
             else
             {
-                ans.push_back(lft+1);
-                ans.push_back(right+1);
-                break;
+                right--;
             }
         }
-        return ans;
+        return {};
     }
 };
